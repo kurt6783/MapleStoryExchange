@@ -45,8 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            products = data.data; // 儲存 API 回傳的資料
-            console.log('Fetched products:', products); // 除錯：確認資料
+            products = data.data ?? []; // 儲存 API 回傳的資料
             // 初始化 Fuse.js
             fuse = new Fuse(products, {
                 keys: ['name', 'category'],

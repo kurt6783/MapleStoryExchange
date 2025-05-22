@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const myList = document.getElementById('myList');
     let mys = [];
-    let fuse = null;
 
     // 從 API 獲取資料
     async function fetchMys() {
@@ -44,17 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            mys = data.data; // 儲存 API 回傳的資料
-            console.log('Fetched mys:', mys); // 除錯：確認資料
-            // 初始化 Fuse.js
-            fuse = new Fuse(mys, {
-                keys: ['name', 'category'],
-                threshold: 0.2, // 降低門檻以提高中文匹配率
-                includeScore: true,
-                useExtendedSearch: true,
-                tokenize: true,
-                matchAllTokens: false
-            });
+            mys = data.data ?? []; // 儲存 API 回傳的資料
+
             displayMys(mys); // 初始顯示所有產品
         } catch (error) {
             console.error('Error fetching mys:', error);
