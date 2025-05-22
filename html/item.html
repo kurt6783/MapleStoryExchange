@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>架上列表</title>
+    <link rel="stylesheet" href="item.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+</head>
+
+<body>
+    <div id="sidebarContainer"></div>
+    <div class="container">
+        <h1>架上列表</h1>
+        <table id="itemTable">
+            <thead>
+                <tr>
+                    <th>名稱</th>
+                    <th>售價</th>
+                    <th>其他資訊</th>
+                    <th>賣家獨特ID</th>
+                </tr>
+            </thead>
+            <tbody id="itemList"></tbody>
+        </table>
+    </div>
+    <script src="sidebar.js"></script>
+    <script src="item.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品搜尋</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+</head>
+
+<body>
+    <div id="sidebarContainer"></div>
+    <div class="container">
+        <h1>產品搜尋</h1>
+        <input type="text" id="searchInput" placeholder="輸入產品名稱或類別">
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>名稱</th>
+                    <th>架上數量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="productList"></tbody>
+        </table>
+    </div>
+    <script src="sidebar.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

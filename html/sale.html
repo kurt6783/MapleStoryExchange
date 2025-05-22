@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品上架</title>
+    <link rel="stylesheet" href="sale.css">
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+
+<body>
+    <div id="sidebarContainer"></div>
+    <div class="container">
+        <h1>產品上架</h1>
+        <form id="saleForm">
+            <div class="form-group">
+                <label for="productName">產品名稱:</label>
+                <input type="text" id="productName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="price">售價:</label>
+                <input type="number" id="price" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="memo">其他資訊:</label>
+                <textarea id="memo" rows="4"></textarea>
+            </div>
+            <button type="button" id="submitBtn">送出</button>
+        </form>
+    </div>
+    <script src="sale.js"></script>
+    <script src="sidebar.js"></script>
+</body>
+
+</html>

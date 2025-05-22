@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊</title>
+    <link rel="stylesheet" href="regist.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>使用者註冊</h1>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="account">帳號</label>
+                <input type="text" id="account" placeholder="輸入帳號" required>
+            </div>
+            <div class="form-group">
+                <label for="password">密碼</label>
+                <input type="password" id="password" placeholder="輸入密碼" required>
+            </div>
+            <div class=" form-group">
+                <label for="password_confirm">確認密碼</label>
+                <input type="password" id="password_confirm" placeholder="再次輸入密碼" required>
+            </div>
+            <div class="form-group">
+                <label for="code">獨特 ID（目前無修正功能請小心填寫）</label>
+                <input type="text" id="code" placeholder="輸入獨特 ID" required>
+            </div>
+            <button type="submit">註冊</button>
+            <button type="button" id="loginButton" onclick="window.location.href='login.html'">登入</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="regist.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登入頁面</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <form class="login-form" id="loginForm">
+        <h2>登入</h2>
+
+        <label for="account">帳號</label>
+        <input type="text" id="account" name="account" required>
+
+        <label for="password">密碼</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">登入</button>
+
+        <div class="error-message" id="errorMessage"></div>
+        <button type="button" id="registerButton" onclick="window.location.href='regist.html'">註冊</button>
+    </form>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
