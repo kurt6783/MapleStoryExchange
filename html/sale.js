@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        submitBtn.disabled = true;
+        submitBtn.textContent = '送出中...';
+
         const saleData = {
             productId: parseInt(productId, 10),
             price: parseFloat(price),
@@ -86,6 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('上架成功！');
             window.location.href = 'index.html';
         } catch (error) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '確認送出';
+
             console.error('Error submitting sale:', error);
             alert('上架失敗，請稍後再試');
         }
