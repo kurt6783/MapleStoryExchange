@@ -4,4 +4,4 @@ CREATE TABLE product (
     category TEXT DEFAULT ''
 );
 
-INSERT INTO product (name, category) VALUES ('火槍攻擊卷軸10%', '');
+INSERT INTO product (name, category) VALUES ('10p火槍攻擊卷軸', '');

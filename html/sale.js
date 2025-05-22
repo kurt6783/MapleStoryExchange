@@ -21,15 +21,34 @@ function getAuthHeaders() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 檢查認證
     if (!checkAuth()) return;
 
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
-    const productName = decodeURIComponent(urlParams.get('name') || '');
+    let productName = '未提供名稱';
+
+    // 除錯：打印原始 name 參數
+    const nameParam = urlParams.get('name');
+    console.log('Raw name param:', nameParam);
+
+    // 嘗試解碼 name 參數
+    try {
+        productName = nameParam ? decodeURIComponent(nameParam) : '未提供名稱';
+        console.log('Decoded product name:', productName); // 除錯：確認解碼結果
+    } catch (error) {
+        console.error('Error decoding name parameter:', error, 'Raw param:', nameParam);
+        alert('產品名稱格式錯誤，請從產品列表重新進入');
+        window.location.href = 'index.html';
+        return;
+    }
 
     // 填充產品名稱
     const productNameInput = document.getElementById('productName');
+    if (!productNameInput) {
+        console.error('productName input not found');
+        alert('頁面載入錯誤，請稍後再試');
+        return;
+    }
     productNameInput.value = productName;
 
     const submitBtn = document.getElementById('submitBtn');
@@ -45,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const saleData = {
             productId: parseInt(productId, 10),
             price: parseFloat(price),
-            memo: memo || ''
+            memo: memo || ' '
         };
 
         try {
@@ -65,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             alert('上架成功！');
-            window.location.href = 'index.html'; // 成功後返回首頁
+            window.location.href = 'index.html';
         } catch (error) {
             console.error('Error submitting sale:', error);
             alert('上架失敗，請稍後再試');
