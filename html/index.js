@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Fetched products:', products); // 除錯：確認資料
             // 初始化 Fuse.js
             fuse = new Fuse(products, {
-                keys: ['Name', 'Category'],
+                keys: ['name', 'category'],
                 threshold: 0.2, // 降低門檻以提高中文匹配率
                 includeScore: true,
                 useExtendedSearch: true,

@@ -31,3 +31,5 @@ ssh -i "$pem_path" "$host" "nohup $remote_path/main >/dev/null 2>&1 &"
 
 
 # ssh -i lineage.pem ec2-user@3.86.236.95
+
+# mP9BJ
