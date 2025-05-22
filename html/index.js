@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.innerHTML = `
                 <td>${product.name}</td>
                 <td><a href="item.html?productId=${product.id}">${product.count}</a></td>
-                <td><button onclick="window.location.href='sale.html?id=${product.id}&name=${encodeURIComponent(product.name)}'">我要上架</button></td>
+                <td><button onclick="window.location.href='sale.html?id=${product.id}&name=${encodeURIComponent(product.name)}'">我要上架(上架後一分鐘才會看到)</button></td>
             `;
             productList.appendChild(row);
         });
