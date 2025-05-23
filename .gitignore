@@ -6,5 +6,6 @@
 /remove
 /sql
 
+deploy.sh
 lineage.pem
 main.db
