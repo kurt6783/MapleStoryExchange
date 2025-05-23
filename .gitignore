@@ -1,4 +1,10 @@
-.vscode
-vendor
+/.vscode
+/bin
+/data
+/vendor
+/wrk
+/remove
+/sql
 
 lineage.pem
+main.db
