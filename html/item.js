@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${item.name}</td>
-                <td>${item.price}</td>
+                <td>${Number(item.price).toLocaleString()}</td>
                 <td>${item.memo}</td>
                 <td>${item.owner_code}</td>
             `;
