@@ -3,10 +3,17 @@ package main
 import (
 	"MapleStoryExchange/internal/handler"
 	"MapleStoryExchange/internal/middleware"
+	"fmt"
+	"net/http"
+	"os"
 	"runtime"
+	"strconv"
+	"strings"
+	"time"
 
 	"log"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
@@ -58,4 +65,51 @@ func main() {
 	protected.POST("remove", func(c *gin.Context) { handler.Remove(c, db) })
 
 	r.Run()
+}
+
+func scraper() {
+	minPage := 1
+	maxPage := 37
+	e := "it"
+
+	var results []string
+	fmt.Println("開始")
+	for page := minPage; page <= maxPage; page++ {
+		fmt.Println("第" + strconv.Itoa(page) + "頁")
+		url := fmt.Sprintf("https://maple.yampiz.com/tw/p/strategy-item/it_?p=%d", page)
+		res, err := http.Get(url)
+		if err != nil {
+			log.Printf("無法取得網頁：%v", err)
+			continue
+		}
+		defer res.Body.Close()
+
+		if res.StatusCode != 200 {
+			log.Printf("HTTP 錯誤：%d", res.StatusCode)
+			continue
+		}
+
+		doc, err := goquery.NewDocumentFromReader(res.Body)
+		if err != nil {
+			log.Printf("解析 HTML 發生錯誤：%v", err)
+			continue
+		}
+
+		doc.Find(".important").Each(func(i int, s *goquery.Selection) {
+			name := strings.TrimSpace(s.Text())
+			if name != "" {
+				sql := fmt.Sprintf("INSERT INTO product (name, category) VALUES ('%s', '');", name)
+				results = append(results, sql)
+			}
+		})
+
+		time.Sleep(1 * time.Second) // 延遲一秒
+	}
+	outputPath := "/Users/kurt.hsu/Desktop/MapleStoryExchange/sql/" + e + ".sql"
+	content := strings.Join(results, "\n") + "\n"
+	err := os.WriteFile(outputPath, []byte(content), 0644)
+	if err != nil {
+
+	}
+	fmt.Println("結束")
 }
