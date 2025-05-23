@@ -25,7 +25,7 @@ func (m *ProductModel) Index(ctx context.Context) ([]types.ProductWithCount, err
         FROM product p
         LEFT JOIN item i ON p.id = i.product_id
         GROUP BY p.id, p.name, p.category
-        ORDER BY p.id ASC
+        ORDER BY count DESC
     `).Scan(&products).Error
 	if err != nil {
 		return nil, err
