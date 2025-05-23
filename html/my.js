@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${my.name}</td>
-                <td>${Number(item.price).toLocaleString()}</td>
+                <td>${Number(my.price).toLocaleString()}</td>
                 <td>${my.memo}</td>
                 <td><button onclick="removeProduct('${my.id}')">下架產品</button></td>
             `;
